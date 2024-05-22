@@ -260,3 +260,6 @@ namespace calcolatrice
         
     }
 }
+
+
+//aggiungere cronologia, elevamento a potenza e radice quadrata
