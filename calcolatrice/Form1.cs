@@ -1,17 +1,88 @@
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Diagnostics.Eventing.Reader;
+
 namespace calcolatrice
 {
     public partial class Form1 : Form
     {
         //https://www.c-sharpcorner.com/article/create-basic-calculator-using-windows-forms-and-c-sharp/
         //https://learn.microsoft.com/it-it/dotnet/api/system.windows.forms.messagebox?view=windowsdesktop-8.0
-        decimal n1 = 0;
-        decimal n2 = 0;
+        decimal primaCifra = 0;
+        decimal secondaCifra = 0;
         string operazione = "";
-        decimal risultato = 0;
+        decimal RisultatoFinale = 0;
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private decimal Calcolo(decimal numero1, decimal numero2, string TipoOperazione) 
+        {
+            decimal risultato = 0;
+            if (TipoOperazione == "+")
+            {
+
+                risultato = numero1 + numero2;
+
+
+
+            }
+            else if (TipoOperazione == "-")
+            {
+
+                risultato = numero2 - numero2;
+
+
+
+            }
+            else if (TipoOperazione == "*")
+            {
+
+                risultato = numero2 * numero2;
+
+
+
+            }
+            else if (TipoOperazione == "/")
+            {
+                if (numero1 == 0)
+                {
+                    string Errore = "Impossibile dividere per 0";
+                    string NomeErrore = "Errore di input";
+
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result;
+                    result = MessageBox.Show(Errore, NomeErrore, buttons);
+                    if (result == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        this.Close();
+                    }
+                }
+                else
+                {
+
+                    risultato = numero1 / numero2;
+
+
+
+
+                }
+
+
+
+            }
+            else if (TipoOperazione == "%")
+            {
+
+                risultato = numero1 / 100;
+            }
+
+
+
+            return risultato;
         }
 
         private void buttonZero_Click(object sender, EventArgs e)
@@ -127,76 +198,65 @@ namespace calcolatrice
                 textBoxDisplay.Text = textBoxDisplay.Text + "9";
             }
         }
-
+        private void buttonVirgola_Click(object sender, EventArgs e)
+        {
+            textBoxDisplay.Text = textBoxDisplay.Text + ",";
+        }
         private void buttonResetTotale_Click(object sender, EventArgs e)
         {
-            textBoxDisplay.Text = "0";
+            if (textBoxDisplay.Text.Length > 0)
+            {
+                textBoxDisplay.Text = textBoxDisplay.Text.Remove(textBoxDisplay.Text.Length - 1);
+            }
         }
         private void buttonReset_Click(object sender, EventArgs e)
         {
-
+            textBoxDisplay.Text = "0";
         }
+        
         private void buttonAddizzione_Click(object sender, EventArgs e)
         {
-            n1 = Convert.ToDecimal(textBoxDisplay);//TODO
+            primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
             textBoxDisplay.Text = "0";
             operazione = "+";
         }
 
         private void buttonSottrazzione_Click(object sender, EventArgs e)
         {
+            primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
+            textBoxDisplay.Text = "0";
             operazione = "-";
         }
 
         private void buttonMoltiplicazione_Click(object sender, EventArgs e)
         {
+            primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
+            textBoxDisplay.Text = "0";
             operazione = "*";
         }
 
         private void buttonDivisione_Click(object sender, EventArgs e)
         {
+            primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
+            textBoxDisplay.Text = "0";
             operazione = "/";
         }
-
+        private void buttonPercentuale_Click(object sender, EventArgs e)
+        {
+            primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
+            operazione = "%";
+            RisultatoFinale = Calcolo(primaCifra, secondaCifra, operazione);
+            textBoxDisplay.Text = Convert.ToString(RisultatoFinale);
+        }
         private void buttonUguale_Click(object sender, EventArgs e)
         {
-            if (operazione == "+")
-            {
-                risultato = n1 + n2;
-                textBoxDisplay.Text = Convert.ToString(risultato);
-                n1 = risultato;
+            secondaCifra = Convert.ToDecimal(textBoxDisplay.Text);
+            RisultatoFinale = Calcolo(primaCifra, secondaCifra, operazione);
+            textBoxDisplay.Text = Convert.ToString(RisultatoFinale);
 
-            }
-            else if (operazione == "-")
-            {
-                risultato = n1 - n2;
-                textBoxDisplay.Text = Convert.ToString(risultato);
-                n1 = risultato;
 
-            }
-            else if (operazione == "*")
-            {
-                risultato = n1 * n2;
-                textBoxDisplay.Text = Convert.ToString(risultato);
-                n1 = risultato;
-            }
-            else if (operazione == "/") 
-            {
-                if (n2 == 0)
-                {
-                    textBoxDisplay.Text = "Non si puo dividere per 0";
-                }
-                else 
-                {
-                    risultato = n1 / n2;
-                    textBoxDisplay.Text = Convert.ToString(risultato);
-                    n1 = risultato;
-                }
-            
-            
-            }
         }
 
-
+        
     }
 }

@@ -229,8 +229,9 @@ namespace calcolatrice
             buttonVirgola.Name = "buttonVirgola";
             buttonVirgola.Size = new Size(50, 30);
             buttonVirgola.TabIndex = 19;
-            buttonVirgola.Text = ".";
+            buttonVirgola.Text = ",";
             buttonVirgola.UseVisualStyleBackColor = true;
+            buttonVirgola.Click += buttonVirgola_Click;
             // 
             // buttonPercentuale
             // 
@@ -240,6 +241,7 @@ namespace calcolatrice
             buttonPercentuale.TabIndex = 20;
             buttonPercentuale.Text = "%";
             buttonPercentuale.UseVisualStyleBackColor = true;
+            buttonPercentuale.Click += buttonPercentuale_Click;
             // 
             // textBoxDisplay
             // 
