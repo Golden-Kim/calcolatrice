@@ -138,6 +138,8 @@ namespace calcolatrice
         }
         private void buttonAddizzione_Click(object sender, EventArgs e)
         {
+            n1 = Convert.ToDecimal(textBoxDisplay);//TODO
+            textBoxDisplay.Text = "0";
             operazione = "+";
         }
 
