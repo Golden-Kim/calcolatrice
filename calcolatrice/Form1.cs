@@ -2,6 +2,13 @@ namespace calcolatrice
 {
     public partial class Form1 : Form
     {
+        //https://www.c-sharpcorner.com/article/create-basic-calculator-using-windows-forms-and-c-sharp/
+        //https://learn.microsoft.com/it-it/dotnet/api/system.windows.forms.messagebox?view=windowsdesktop-8.0
+        decimal n1 = 0;
+        decimal n2 = 0;
+        string operazione = "";
+        decimal risultato = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -120,5 +127,74 @@ namespace calcolatrice
                 textBoxDisplay.Text = textBoxDisplay.Text + "9";
             }
         }
+
+        private void buttonResetTotale_Click(object sender, EventArgs e)
+        {
+            textBoxDisplay.Text = "0";
+        }
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void buttonAddizzione_Click(object sender, EventArgs e)
+        {
+            operazione = "+";
+        }
+
+        private void buttonSottrazzione_Click(object sender, EventArgs e)
+        {
+            operazione = "-";
+        }
+
+        private void buttonMoltiplicazione_Click(object sender, EventArgs e)
+        {
+            operazione = "*";
+        }
+
+        private void buttonDivisione_Click(object sender, EventArgs e)
+        {
+            operazione = "/";
+        }
+
+        private void buttonUguale_Click(object sender, EventArgs e)
+        {
+            if (operazione == "+")
+            {
+                risultato = n1 + n2;
+                textBoxDisplay.Text = Convert.ToString(risultato);
+                n1 = risultato;
+
+            }
+            else if (operazione == "-")
+            {
+                risultato = n1 - n2;
+                textBoxDisplay.Text = Convert.ToString(risultato);
+                n1 = risultato;
+
+            }
+            else if (operazione == "*")
+            {
+                risultato = n1 * n2;
+                textBoxDisplay.Text = Convert.ToString(risultato);
+                n1 = risultato;
+            }
+            else if (operazione == "/") 
+            {
+                if (n2 == 0)
+                {
+                    textBoxDisplay.Text = "Non si puo dividere per 0";
+                }
+                else 
+                {
+                    risultato = n1 / n2;
+                    textBoxDisplay.Text = Convert.ToString(risultato);
+                    n1 = risultato;
+                }
+            
+            
+            }
+        }
+
+
     }
 }

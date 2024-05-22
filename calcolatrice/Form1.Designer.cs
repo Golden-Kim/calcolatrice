@@ -43,7 +43,7 @@ namespace calcolatrice
             buttonSette = new Button();
             buttonUguale = new Button();
             buttonAddizzione = new Button();
-            buttonSottraazzione = new Button();
+            buttonSottrazzione = new Button();
             buttonMoltiplicazione = new Button();
             buttonDivisione = new Button();
             buttonZero = new Button();
@@ -152,6 +152,7 @@ namespace calcolatrice
             buttonUguale.TabIndex = 9;
             buttonUguale.Text = "=";
             buttonUguale.UseVisualStyleBackColor = true;
+            buttonUguale.Click += buttonUguale_Click;
             // 
             // buttonAddizzione
             // 
@@ -161,15 +162,16 @@ namespace calcolatrice
             buttonAddizzione.TabIndex = 10;
             buttonAddizzione.Text = "+";
             buttonAddizzione.UseVisualStyleBackColor = true;
+            buttonAddizzione.Click += buttonAddizzione_Click;
             // 
-            // buttonSottraazzione
+            // buttonSottrazzione
             // 
-            buttonSottraazzione.Location = new Point(169, 228);
-            buttonSottraazzione.Name = "buttonSottraazzione";
-            buttonSottraazzione.Size = new Size(30, 30);
-            buttonSottraazzione.TabIndex = 11;
-            buttonSottraazzione.Text = "-";
-            buttonSottraazzione.UseVisualStyleBackColor = true;
+            buttonSottrazzione.Location = new Point(169, 228);
+            buttonSottrazzione.Name = "buttonSottrazzione";
+            buttonSottrazzione.Size = new Size(30, 30);
+            buttonSottrazzione.TabIndex = 11;
+            buttonSottrazzione.Text = "-";
+            buttonSottrazzione.UseVisualStyleBackColor = true;
             // 
             // buttonMoltiplicazione
             // 
@@ -179,6 +181,7 @@ namespace calcolatrice
             buttonMoltiplicazione.TabIndex = 12;
             buttonMoltiplicazione.Text = "X";
             buttonMoltiplicazione.UseVisualStyleBackColor = true;
+            buttonMoltiplicazione.Click += buttonMoltiplicazione_Click;
             // 
             // buttonDivisione
             // 
@@ -188,6 +191,7 @@ namespace calcolatrice
             buttonDivisione.TabIndex = 13;
             buttonDivisione.Text = "÷";
             buttonDivisione.UseVisualStyleBackColor = true;
+            buttonDivisione.Click += buttonDivisione_Click;
             // 
             // buttonZero
             // 
@@ -207,6 +211,7 @@ namespace calcolatrice
             buttonReset.TabIndex = 17;
             buttonReset.Text = "C";
             buttonReset.UseVisualStyleBackColor = true;
+            buttonReset.Click += buttonReset_Click;
             // 
             // buttonResetTotale
             // 
@@ -216,6 +221,7 @@ namespace calcolatrice
             buttonResetTotale.TabIndex = 18;
             buttonResetTotale.Text = "CE";
             buttonResetTotale.UseVisualStyleBackColor = true;
+            buttonResetTotale.Click += buttonResetTotale_Click;
             // 
             // buttonVirgola
             // 
@@ -241,6 +247,8 @@ namespace calcolatrice
             textBoxDisplay.Name = "textBoxDisplay";
             textBoxDisplay.Size = new Size(212, 23);
             textBoxDisplay.TabIndex = 21;
+            textBoxDisplay.Text = "0";
+            textBoxDisplay.TextAlign = HorizontalAlignment.Right;
             // 
             // Form1
             // 
@@ -255,7 +263,7 @@ namespace calcolatrice
             Controls.Add(buttonZero);
             Controls.Add(buttonDivisione);
             Controls.Add(buttonMoltiplicazione);
-            Controls.Add(buttonSottraazzione);
+            Controls.Add(buttonSottrazzione);
             Controls.Add(buttonAddizzione);
             Controls.Add(buttonUguale);
             Controls.Add(buttonNove);
@@ -268,7 +276,7 @@ namespace calcolatrice
             Controls.Add(buttonDue);
             Controls.Add(buttonUno);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Calcolatrice";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -286,7 +294,7 @@ namespace calcolatrice
         private Button buttonSette;
         private Button buttonUguale;
         private Button buttonAddizzione;
-        private Button buttonSottraazzione;
+        private Button buttonSottrazzione;
         private Button buttonMoltiplicazione;
         private Button buttonDivisione;
         private Button buttonZero;
