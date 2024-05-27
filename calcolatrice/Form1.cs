@@ -33,7 +33,7 @@ namespace calcolatrice
             else if (TipoOperazione == "-")
             {
 
-                risultato = numero2 - numero2;
+                risultato = numero1 - numero2;
 
 
 
@@ -41,7 +41,7 @@ namespace calcolatrice
             else if (TipoOperazione == "*")
             {
 
-                risultato = numero2 * numero2;
+                risultato = numero1 * numero2;
 
 
 
