@@ -12,7 +12,7 @@ namespace calcolatrice
         decimal secondaCifra = 0;
         string operazione = "";
         decimal RisultatoFinale = 0;
-        decimal[] Cronologia = new decimal[100];
+        string[] Cronologia = new string[100];
 
 
 
@@ -241,7 +241,17 @@ namespace calcolatrice
             textBoxDisplay.Text = Convert.ToString(RisultatoFinale);
             for (int i = 0; i < Cronologia.Length; i++)
             {
-                Cronologia[i] = RisultatoFinale; 
+                string PrimoNumeroCron = "";
+                string SecondoNumeroCron = "";
+
+
+                PrimoNumeroCron = primaCifra.ToString();
+                SecondoNumeroCron = primaCifra.ToString();
+
+                Cronologia[i] = PrimoNumeroCron ""
+                    //bisogna usare uno switch per spevifivare quale segno
+
+
             }
 
 
