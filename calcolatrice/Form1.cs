@@ -2,18 +2,22 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Diagnostics.Eventing.Reader;
+using System.ComponentModel.Design;
+using System.Security.Permissions;
 
 namespace calcolatrice
 {
     public partial class Form1 : Form
     {
-        
+
         decimal primaCifra = 0;
         decimal secondaCifra = 0;
         string operazione = "";
         decimal RisultatoFinale = 0;
-        string[] Cronologia = new string[100];
-
+        public string[] VettRisultato = new string[50];
+        public string RisultatoFinaleString = "";
+        public int Cont = 0;
+        public string RisultatoFinaleCron = "";
 
 
 
@@ -21,8 +25,21 @@ namespace calcolatrice
         {
             InitializeComponent();
         }
+        public string[] OttieniVett()
+        {
+            return VettRisultato;
+        }
+        public int OttieniLung()
+        {
+            return Cont;
+        }
+        public string OttieniRisultato() 
+        {
 
-        private decimal Calcolo(decimal numero1, decimal numero2, string TipoOperazione) 
+            return RisultatoFinaleCron;
+        
+        }
+        private decimal Calcolo(decimal numero1, decimal numero2, string TipoOperazione)
         {
             decimal risultato = 0;
             switch (TipoOperazione)
@@ -39,7 +56,7 @@ namespace calcolatrice
                     risultato = numero1 * numero2;
                     break;
 
-                    case "/":
+                case "/":
                     if (numero1 == 0)
                     {
                         string Errore = "Impossibile dividere per 0";
@@ -69,6 +86,16 @@ namespace calcolatrice
 
 
             return risultato;
+        }
+        public string FuncCronologia(string primNum, string secNum, string OperString, string Risultato)
+        {
+            string RisultatoString = "";
+
+            RisultatoString = Risultato + "=" + primNum + "" + OperString + "" + secNum;
+
+
+            return RisultatoString;
+            
         }
 
         private void buttonZero_Click(object sender, EventArgs e)
@@ -199,7 +226,7 @@ namespace calcolatrice
         {
             textBoxDisplay.Text = "0";
         }
-        
+
         private void buttonAddizzione_Click(object sender, EventArgs e)
         {
             primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
@@ -236,30 +263,46 @@ namespace calcolatrice
         }
         private void buttonUguale_Click(object sender, EventArgs e)
         {
+            Cont++;
             secondaCifra = Convert.ToDecimal(textBoxDisplay.Text);
             RisultatoFinale = Calcolo(primaCifra, secondaCifra, operazione);
             textBoxDisplay.Text = Convert.ToString(RisultatoFinale);
-            for (int i = 0; i < Cronologia.Length; i++)
-            {
+            string RisultatoFinaleCronologia = "";
+            
+                
                 string PrimoNumeroCron = "";
                 string SecondoNumeroCron = "";
 
+                string OperazioneCron = "";
 
                 PrimoNumeroCron = primaCifra.ToString();
                 SecondoNumeroCron = primaCifra.ToString();
+                RisultatoFinaleString = RisultatoFinale.ToString();
+                OperazioneCron = operazione.ToString();
 
-                Cronologia[i] = PrimoNumeroCron ""
-                    //bisogna usare uno switch per spevifivare quale segno
 
+                for (int i = 0; i < Cont; i++)
+                {
+                    RisultatoFinaleCronologia = FuncCronologia(PrimoNumeroCron, SecondoNumeroCron, OperazioneCron, RisultatoFinaleString);
+                    VettRisultato[i] = RisultatoFinaleCronologia;
+                }
+                string efhiefhi = "";
+                efhiefhi = RisultatoFinaleCronologia;
+                
+                
 
-            }
+                
+            
 
 
         }
 
-        
+        private void buttonCronologia_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2(this);
+            form2.Show();
+        }
     }
 }
 
 
-//aggiungere cronologia, elevamento a potenza e radice quadrata

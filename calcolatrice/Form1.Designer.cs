@@ -52,6 +52,7 @@ namespace calcolatrice
             buttonVirgola = new Button();
             buttonPercentuale = new Button();
             textBoxDisplay = new TextBox();
+            buttonCronologia = new Button();
             SuspendLayout();
             // 
             // buttonUno
@@ -252,11 +253,22 @@ namespace calcolatrice
             textBoxDisplay.Text = "0";
             textBoxDisplay.TextAlign = HorizontalAlignment.Right;
             // 
+            // buttonCronologia
+            // 
+            buttonCronologia.Location = new Point(2, 29);
+            buttonCronologia.Name = "buttonCronologia";
+            buttonCronologia.Size = new Size(84, 30);
+            buttonCronologia.TabIndex = 22;
+            buttonCronologia.Text = "Cronologia";
+            buttonCronologia.UseVisualStyleBackColor = true;
+            buttonCronologia.Click += buttonCronologia_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(211, 326);
+            Controls.Add(buttonCronologia);
             Controls.Add(textBoxDisplay);
             Controls.Add(buttonPercentuale);
             Controls.Add(buttonVirgola);
@@ -305,5 +317,6 @@ namespace calcolatrice
         private Button buttonVirgola;
         private Button buttonPercentuale;
         private TextBox textBoxDisplay;
+        private Button buttonCronologia;
     }
 }
