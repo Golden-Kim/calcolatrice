@@ -304,5 +304,5 @@ namespace calcolatrice
         }
     }
 }
-
+//usare l'algoritmi du caricamento qua e quello xi visualuzzazzione nel form2
 
