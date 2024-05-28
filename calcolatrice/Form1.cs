@@ -7,12 +7,15 @@ namespace calcolatrice
 {
     public partial class Form1 : Form
     {
-        //https://www.c-sharpcorner.com/article/create-basic-calculator-using-windows-forms-and-c-sharp/
-        //https://learn.microsoft.com/it-it/dotnet/api/system.windows.forms.messagebox?view=windowsdesktop-8.0
+        
         decimal primaCifra = 0;
         decimal secondaCifra = 0;
         string operazione = "";
         decimal RisultatoFinale = 0;
+        decimal[] Cronologia = new decimal[100];
+
+
+
 
         public Form1()
         {
@@ -22,62 +25,45 @@ namespace calcolatrice
         private decimal Calcolo(decimal numero1, decimal numero2, string TipoOperazione) 
         {
             decimal risultato = 0;
-            if (TipoOperazione == "+")
+            switch (TipoOperazione)
             {
+                case "+":
+                    risultato = numero1 + numero2;
+                    break;
 
-                risultato = numero1 + numero2;
+                case "-":
+                    risultato = numero1 - numero2;
+                    break;
 
+                case "*":
+                    risultato = numero1 * numero2;
+                    break;
 
-
-            }
-            else if (TipoOperazione == "-")
-            {
-
-                risultato = numero1 - numero2;
-
-
-
-            }
-            else if (TipoOperazione == "*")
-            {
-
-                risultato = numero1 * numero2;
-
-
-
-            }
-            else if (TipoOperazione == "/")
-            {
-                if (numero1 == 0)
-                {
-                    string Errore = "Impossibile dividere per 0";
-                    string NomeErrore = "Errore di input";
-
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    DialogResult result;
-                    result = MessageBox.Show(Errore, NomeErrore, buttons);
-                    if (result == System.Windows.Forms.DialogResult.Yes)
+                    case "/":
+                    if (numero1 == 0)
                     {
-                        this.Close();
+                        string Errore = "Impossibile dividere per 0";
+                        string NomeErrore = "Errore di input";
+
+                        MessageBoxButtons buttons = MessageBoxButtons.OK;
+                        DialogResult result;
+                        result = MessageBox.Show(Errore, NomeErrore, buttons);
+                        if (result == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            this.Close();
+                        }
                     }
-                }
-                else
-                {
+                    else
+                    {
+                        risultato = numero1 / numero2;
+                    }
+                    break;
+                case "%":
+                    risultato = numero1 / 100;
+                    break;
 
-                    risultato = numero1 / numero2;
-
-
-
-
-                }
-
-
-
-            }
-            else if (TipoOperazione == "%")
-            {
-
-                risultato = numero1 / 100;
+                default:
+                    break;
             }
 
 
@@ -253,6 +239,10 @@ namespace calcolatrice
             secondaCifra = Convert.ToDecimal(textBoxDisplay.Text);
             RisultatoFinale = Calcolo(primaCifra, secondaCifra, operazione);
             textBoxDisplay.Text = Convert.ToString(RisultatoFinale);
+            for (int i = 0; i < Cronologia.Length; i++)
+            {
+                Cronologia[i] = RisultatoFinale; 
+            }
 
 
         }
