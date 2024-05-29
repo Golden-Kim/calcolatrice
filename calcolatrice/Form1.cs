@@ -9,6 +9,7 @@ namespace calcolatrice
 {
     public partial class Form1 : Form
     {
+        private Form2 form2;
 
         decimal primaCifra = 0;
         decimal secondaCifra = 0;
@@ -19,8 +20,9 @@ namespace calcolatrice
         public int Cont = 1;
         public string RisultatoFinaleCron = "";
         int loop = 0;
-
-
+        string RisultatoFinaleCronologia = "";
+        string PrimoNumeroCron = "";
+        string SecondoNumeroCron = "";
 
         public Form1()
         {
@@ -33,6 +35,13 @@ namespace calcolatrice
         public int OttieniLung()
         {
             return loop;
+        }
+        public void Reset() 
+        {
+            
+            Cont = 1;
+            loop = 0;
+            
         }
         public string OttieniRisultato() 
         {
@@ -91,8 +100,15 @@ namespace calcolatrice
         public string FuncCronologia(string primNum, string secNum, string OperString, string Risultato)
         {
             string RisultatoString = "";
-
-            RisultatoString = Risultato + "=" + primNum + "" + OperString + "" + secNum;
+            if (OperString != "%")
+            {
+                RisultatoString = Risultato + "=" + primNum + "" + OperString + "" + secNum;
+            }
+            else
+            {
+                RisultatoString = Risultato + "=" + primNum + "" + OperString;
+            }
+            
 
 
             return RisultatoString;
@@ -259,30 +275,38 @@ namespace calcolatrice
         {
             primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
             operazione = "%";
-            RisultatoFinale = Calcolo(primaCifra, secondaCifra, operazione);
-            textBoxDisplay.Text = Convert.ToString(RisultatoFinale);
+            textBoxDisplay.Text = "0";
+            
         }
         private void buttonUguale_Click(object sender, EventArgs e)
         {
+            PrimoNumeroCron = "";
+            SecondoNumeroCron = "";
+            RisultatoFinaleCronologia = "";
             
+
+            
+            string OperazioneCron = "";
             
             Cont++;
             secondaCifra = Convert.ToDecimal(textBoxDisplay.Text);
             RisultatoFinale = Calcolo(primaCifra, secondaCifra, operazione);
+            
+
+
             textBoxDisplay.Text = Convert.ToString(RisultatoFinale);
-            string RisultatoFinaleCronologia = "";
+            
+
+            
+
             
                 
-                string PrimoNumeroCron = "";
-                string SecondoNumeroCron = "";
-
-                string OperazioneCron = "";
-
+           
                 PrimoNumeroCron = primaCifra.ToString();
-                SecondoNumeroCron = primaCifra.ToString();
+                SecondoNumeroCron = secondaCifra.ToString();
                 RisultatoFinaleString = RisultatoFinale.ToString();
                 OperazioneCron = operazione.ToString();
-
+            
             do
             {
 
@@ -304,6 +328,10 @@ namespace calcolatrice
         {
             Form2 form2 = new Form2(this);
             form2.Show();
+            textBoxDisplay.Text = "0";
+
+            primaCifra = 0;
+            secondaCifra = 0;
         }
     }
 }

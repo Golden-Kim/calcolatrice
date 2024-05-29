@@ -53,6 +53,9 @@ namespace calcolatrice
             buttonPercentuale = new Button();
             textBoxDisplay = new TextBox();
             buttonCronologia = new Button();
+            buttonElevazioneaPiacere = new Button();
+            buttonQuadrata = new Button();
+            buttonRadiceQuadrata = new Button();
             SuspendLayout();
             // 
             // buttonUno
@@ -186,7 +189,7 @@ namespace calcolatrice
             // 
             // buttonDivisione
             // 
-            buttonDivisione.Location = new Point(169, 161);
+            buttonDivisione.Location = new Point(169, 170);
             buttonDivisione.Name = "buttonDivisione";
             buttonDivisione.Size = new Size(30, 30);
             buttonDivisione.TabIndex = 13;
@@ -206,7 +209,7 @@ namespace calcolatrice
             // 
             // buttonReset
             // 
-            buttonReset.Location = new Point(58, 161);
+            buttonReset.Location = new Point(58, 170);
             buttonReset.Name = "buttonReset";
             buttonReset.Size = new Size(50, 30);
             buttonReset.TabIndex = 17;
@@ -216,7 +219,7 @@ namespace calcolatrice
             // 
             // buttonResetTotale
             // 
-            buttonResetTotale.Location = new Point(2, 161);
+            buttonResetTotale.Location = new Point(2, 170);
             buttonResetTotale.Name = "buttonResetTotale";
             buttonResetTotale.Size = new Size(50, 30);
             buttonResetTotale.TabIndex = 18;
@@ -236,7 +239,7 @@ namespace calcolatrice
             // 
             // buttonPercentuale
             // 
-            buttonPercentuale.Location = new Point(113, 161);
+            buttonPercentuale.Location = new Point(113, 170);
             buttonPercentuale.Name = "buttonPercentuale";
             buttonPercentuale.Size = new Size(50, 30);
             buttonPercentuale.TabIndex = 20;
@@ -263,11 +266,41 @@ namespace calcolatrice
             buttonCronologia.UseVisualStyleBackColor = true;
             buttonCronologia.Click += buttonCronologia_Click;
             // 
+            // buttonElevazioneaPiacere
+            // 
+            buttonElevazioneaPiacere.Location = new Point(114, 143);
+            buttonElevazioneaPiacere.Name = "buttonElevazioneaPiacere";
+            buttonElevazioneaPiacere.Size = new Size(50, 30);
+            buttonElevazioneaPiacere.TabIndex = 25;
+            buttonElevazioneaPiacere.Text = "^n";
+            buttonElevazioneaPiacere.UseVisualStyleBackColor = true;
+            // 
+            // buttonQuadrata
+            // 
+            buttonQuadrata.Location = new Point(3, 143);
+            buttonQuadrata.Name = "buttonQuadrata";
+            buttonQuadrata.Size = new Size(50, 30);
+            buttonQuadrata.TabIndex = 24;
+            buttonQuadrata.Text = "^2";
+            buttonQuadrata.UseVisualStyleBackColor = true;
+            // 
+            // buttonRadiceQuadrata
+            // 
+            buttonRadiceQuadrata.Location = new Point(59, 143);
+            buttonRadiceQuadrata.Name = "buttonRadiceQuadrata";
+            buttonRadiceQuadrata.Size = new Size(50, 30);
+            buttonRadiceQuadrata.TabIndex = 23;
+            buttonRadiceQuadrata.Text = "√";
+            buttonRadiceQuadrata.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(211, 326);
+            Controls.Add(buttonElevazioneaPiacere);
+            Controls.Add(buttonQuadrata);
+            Controls.Add(buttonRadiceQuadrata);
             Controls.Add(buttonCronologia);
             Controls.Add(textBoxDisplay);
             Controls.Add(buttonPercentuale);
@@ -318,5 +351,8 @@ namespace calcolatrice
         private Button buttonPercentuale;
         private TextBox textBoxDisplay;
         private Button buttonCronologia;
+        private Button buttonElevazioneaPiacere;
+        private Button buttonQuadrata;
+        private Button buttonRadiceQuadrata;
     }
 }
