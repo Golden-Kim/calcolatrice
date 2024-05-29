@@ -274,6 +274,7 @@ namespace calcolatrice
             buttonElevazioneaPiacere.TabIndex = 25;
             buttonElevazioneaPiacere.Text = "^n";
             buttonElevazioneaPiacere.UseVisualStyleBackColor = true;
+            buttonElevazioneaPiacere.Click += buttonElevazioneaPiacere_Click;
             // 
             // buttonQuadrata
             // 
@@ -283,6 +284,7 @@ namespace calcolatrice
             buttonQuadrata.TabIndex = 24;
             buttonQuadrata.Text = "^2";
             buttonQuadrata.UseVisualStyleBackColor = true;
+            buttonQuadrata.Click += buttonQuadrata_Click;
             // 
             // buttonRadiceQuadrata
             // 
@@ -292,6 +294,7 @@ namespace calcolatrice
             buttonRadiceQuadrata.TabIndex = 23;
             buttonRadiceQuadrata.Text = "√";
             buttonRadiceQuadrata.UseVisualStyleBackColor = true;
+            buttonRadiceQuadrata.Click += buttonRadiceQuadrata_Click;
             // 
             // Form1
             // 

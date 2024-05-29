@@ -1,4 +1,4 @@
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Diagnostics.Eventing.Reader;
@@ -9,8 +9,6 @@ namespace calcolatrice
 {
     public partial class Form1 : Form
     {
-        private Form2 form2;
-
         decimal primaCifra = 0;
         decimal secondaCifra = 0;
         string operazione = "";
@@ -36,18 +34,18 @@ namespace calcolatrice
         {
             return loop;
         }
-        public void Reset() 
+        public void Reset()
         {
-            
+
             Cont = 1;
             loop = 0;
-            
+
         }
-        public string OttieniRisultato() 
+        public string OttieniRisultato()
         {
 
             return RisultatoFinaleCron;
-        
+
         }
         private decimal Calcolo(decimal numero1, decimal numero2, string TipoOperazione)
         {
@@ -88,7 +86,26 @@ namespace calcolatrice
                 case "%":
                     risultato = numero1 / 100;
                     break;
+                case "^2":
+                    risultato = numero1 * numero1;
+                    break;
+                case "^n":
+                    for (int i = 1; i < numero2; i++)
+                    {
+                        if (risultato == 0)
+                        {
+                            risultato = numero1 * numero1;
+                        }
+                        else
+                        {
+                            risultato = risultato * numero1;
+                        }
 
+                    }
+                    break;
+                case "√":
+                    risultato = (decimal)Math.Sqrt((double)numero1);
+                    break;
                 default:
                     break;
             }
@@ -100,19 +117,51 @@ namespace calcolatrice
         public string FuncCronologia(string primNum, string secNum, string OperString, string Risultato)
         {
             string RisultatoString = "";
-            if (OperString != "%")
+            switch (OperString)
             {
-                RisultatoString = Risultato + "=" + primNum + "" + OperString + "" + secNum;
+                case "+":
+                    RisultatoString = Risultato + "=" + primNum + "" + OperString + "" + secNum;
+                    break;
+
+                case "-":
+                    RisultatoString = Risultato + "=" + primNum + "" + OperString + "" + secNum;
+                    break;
+
+                case "*":
+                    RisultatoString = Risultato + "=" + primNum + "" + OperString + "" + secNum;
+                    break;
+
+                case "/":
+                    RisultatoString = Risultato + "=" + primNum + "" + OperString + "" + secNum;
+                    break;
+
+                case "%":
+                    RisultatoString = Risultato + "=" + primNum + OperString;
+                    break;
+                    
+                case "^2":
+                    RisultatoString = Risultato + "=" + primNum + OperString;
+                    break;
+
+                case "^n":
+                    RisultatoString = Risultato + "=" + primNum + "^" + secNum;
+                    break;
+
+                case "√":
+                    RisultatoString = Risultato + "=" + OperString + primNum;
+                    break;
+
+                default:
+                    break;
             }
-            else
-            {
-                RisultatoString = Risultato + "=" + primNum + "" + OperString;
-            }
-            
+
+
+
+
 
 
             return RisultatoString;
-            
+
         }
 
         private void buttonZero_Click(object sender, EventArgs e)
@@ -276,50 +325,69 @@ namespace calcolatrice
             primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
             operazione = "%";
             textBoxDisplay.Text = "0";
-            
+
+        }
+        private void buttonQuadrata_Click(object sender, EventArgs e)
+        {
+            primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
+            operazione = "^2";
+            textBoxDisplay.Text = "0";
+
+        }
+        private void buttonElevazioneaPiacere_Click(object sender, EventArgs e)
+        {
+            primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
+            operazione = "^n";
+            textBoxDisplay.Text = "0";
+        }
+        private void buttonRadiceQuadrata_Click(object sender, EventArgs e)
+        {
+            primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
+            operazione = "√";
+            textBoxDisplay.Text = "0";
         }
         private void buttonUguale_Click(object sender, EventArgs e)
         {
             PrimoNumeroCron = "";
             SecondoNumeroCron = "";
             RisultatoFinaleCronologia = "";
-            
 
-            
+
+
             string OperazioneCron = "";
-            
+
             Cont++;
             secondaCifra = Convert.ToDecimal(textBoxDisplay.Text);
             RisultatoFinale = Calcolo(primaCifra, secondaCifra, operazione);
-            
+
 
 
             textBoxDisplay.Text = Convert.ToString(RisultatoFinale);
-            
 
-            
 
-            
-                
-           
-                PrimoNumeroCron = primaCifra.ToString();
-                SecondoNumeroCron = secondaCifra.ToString();
-                RisultatoFinaleString = RisultatoFinale.ToString();
-                OperazioneCron = operazione.ToString();
-            
+
+
+
+
+
+            PrimoNumeroCron = primaCifra.ToString();
+            SecondoNumeroCron = secondaCifra.ToString();
+            RisultatoFinaleString = RisultatoFinale.ToString();
+            OperazioneCron = operazione.ToString();
+
             do
             {
 
-                RisultatoFinaleCronologia =FuncCronologia(PrimoNumeroCron, SecondoNumeroCron,OperazioneCron , RisultatoFinaleString);
+                RisultatoFinaleCronologia = FuncCronologia(PrimoNumeroCron, SecondoNumeroCron, OperazioneCron, RisultatoFinaleString);
                 VettRisultato[loop] = RisultatoFinaleCronologia;
                 loop++;
 
-            } while (Cont<loop);
-               
-                
+            } while (Cont < loop);
 
-                
-            
+
+
+
+
 
 
         }
@@ -333,6 +401,8 @@ namespace calcolatrice
             primaCifra = 0;
             secondaCifra = 0;
         }
+
+        
     }
 }
 
