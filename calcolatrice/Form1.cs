@@ -16,8 +16,9 @@ namespace calcolatrice
         decimal RisultatoFinale = 0;
         public string[] VettRisultato = new string[50];
         public string RisultatoFinaleString = "";
-        public int Cont = 0;
+        public int Cont = 1;
         public string RisultatoFinaleCron = "";
+        int loop = 0;
 
 
 
@@ -31,7 +32,7 @@ namespace calcolatrice
         }
         public int OttieniLung()
         {
-            return Cont;
+            return loop;
         }
         public string OttieniRisultato() 
         {
@@ -263,6 +264,8 @@ namespace calcolatrice
         }
         private void buttonUguale_Click(object sender, EventArgs e)
         {
+            
+            
             Cont++;
             secondaCifra = Convert.ToDecimal(textBoxDisplay.Text);
             RisultatoFinale = Calcolo(primaCifra, secondaCifra, operazione);
@@ -280,15 +283,15 @@ namespace calcolatrice
                 RisultatoFinaleString = RisultatoFinale.ToString();
                 OperazioneCron = operazione.ToString();
 
+            do
+            {
 
-                for (int i = 0; i < Cont; i++)
-                {
-                    RisultatoFinaleCronologia = FuncCronologia(PrimoNumeroCron, SecondoNumeroCron, OperazioneCron, RisultatoFinaleString);
-                    VettRisultato[i] = RisultatoFinaleCronologia;
-                }
-                string efhiefhi = "";
-                efhiefhi = RisultatoFinaleCronologia;
-                
+                RisultatoFinaleCronologia =FuncCronologia(PrimoNumeroCron, SecondoNumeroCron,OperazioneCron , RisultatoFinaleString);
+                VettRisultato[loop] = RisultatoFinaleCronologia;
+                loop++;
+
+            } while (Cont<loop);
+               
                 
 
                 
@@ -304,5 +307,4 @@ namespace calcolatrice
         }
     }
 }
-//usare l'algoritmi du caricamento qua e quello xi visualuzzazzione nel form2
 

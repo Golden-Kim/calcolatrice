@@ -18,20 +18,10 @@ namespace calcolatrice
         {
             InitializeComponent();
             this.form1 = form1;
-            //Caricamento();
+            
             Visualizzazzione();
         }
-        /*public void Caricamento()
-        {
-            string[] myArray = form1.OttieniVett();
-            int arrayLength = form1.OttieniLung();
-            string Risultato = form1.OttieniRisultato();
-            for (int i = 0; i < arrayLength; i++)
-            {
-                myArray[i] = Risultato;
-            }
-
-        }*/
+        
         public void Visualizzazzione()
         {
             string[] Vettore = form1.OttieniVett();
