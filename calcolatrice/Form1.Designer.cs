@@ -43,7 +43,6 @@ namespace calcolatrice
             buttonSette = new Button();
             buttonUguale = new Button();
             buttonAddizzione = new Button();
-            buttonSottrazzione = new Button();
             buttonMoltiplicazione = new Button();
             buttonDivisione = new Button();
             buttonZero = new Button();
@@ -56,6 +55,7 @@ namespace calcolatrice
             buttonElevazioneaPiacere = new Button();
             buttonQuadrata = new Button();
             buttonRadiceQuadrata = new Button();
+            buttonSottrazione = new Button();
             SuspendLayout();
             // 
             // buttonUno
@@ -167,15 +167,6 @@ namespace calcolatrice
             buttonAddizzione.Text = "+";
             buttonAddizzione.UseVisualStyleBackColor = true;
             buttonAddizzione.Click += buttonAddizzione_Click;
-            // 
-            // buttonSottrazzione
-            // 
-            buttonSottrazzione.Location = new Point(169, 228);
-            buttonSottrazzione.Name = "buttonSottrazzione";
-            buttonSottrazzione.Size = new Size(30, 30);
-            buttonSottrazzione.TabIndex = 11;
-            buttonSottrazzione.Text = "-";
-            buttonSottrazzione.UseVisualStyleBackColor = true;
             // 
             // buttonMoltiplicazione
             // 
@@ -296,11 +287,22 @@ namespace calcolatrice
             buttonRadiceQuadrata.UseVisualStyleBackColor = true;
             buttonRadiceQuadrata.Click += buttonRadiceQuadrata_Click;
             // 
+            // buttonSottrazione
+            // 
+            buttonSottrazione.Location = new Point(169, 226);
+            buttonSottrazione.Name = "buttonSottrazione";
+            buttonSottrazione.Size = new Size(30, 30);
+            buttonSottrazione.TabIndex = 26;
+            buttonSottrazione.Text = "-";
+            buttonSottrazione.UseVisualStyleBackColor = true;
+            buttonSottrazione.Click += buttonSottrazione_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(211, 326);
+            Controls.Add(buttonSottrazione);
             Controls.Add(buttonElevazioneaPiacere);
             Controls.Add(buttonQuadrata);
             Controls.Add(buttonRadiceQuadrata);
@@ -313,7 +315,6 @@ namespace calcolatrice
             Controls.Add(buttonZero);
             Controls.Add(buttonDivisione);
             Controls.Add(buttonMoltiplicazione);
-            Controls.Add(buttonSottrazzione);
             Controls.Add(buttonAddizzione);
             Controls.Add(buttonUguale);
             Controls.Add(buttonNove);
@@ -344,7 +345,6 @@ namespace calcolatrice
         private Button buttonSette;
         private Button buttonUguale;
         private Button buttonAddizzione;
-        private Button buttonSottrazzione;
         private Button buttonMoltiplicazione;
         private Button buttonDivisione;
         private Button buttonZero;
@@ -357,5 +357,6 @@ namespace calcolatrice
         private Button buttonElevazioneaPiacere;
         private Button buttonQuadrata;
         private Button buttonRadiceQuadrata;
+        private Button buttonSottrazione;
     }
 }

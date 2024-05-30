@@ -138,7 +138,7 @@ namespace calcolatrice
                 case "%":
                     RisultatoString = Risultato + "=" + primNum + OperString;
                     break;
-                    
+
                 case "^2":
                     RisultatoString = Risultato + "=" + primNum + OperString;
                     break;
@@ -299,14 +299,12 @@ namespace calcolatrice
             textBoxDisplay.Text = "0";
             operazione = "+";
         }
-
-        private void buttonSottrazzione_Click(object sender, EventArgs e)
+        private void buttonSottrazione_Click_1(object sender, EventArgs e)
         {
             primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
             textBoxDisplay.Text = "0";
             operazione = "-";
         }
-
         private void buttonMoltiplicazione_Click(object sender, EventArgs e)
         {
             primaCifra = Convert.ToDecimal(textBoxDisplay.Text);
@@ -348,28 +346,16 @@ namespace calcolatrice
         }
         private void buttonUguale_Click(object sender, EventArgs e)
         {
+            Cont++;
             PrimoNumeroCron = "";
             SecondoNumeroCron = "";
             RisultatoFinaleCronologia = "";
-
-
-
             string OperazioneCron = "";
 
-            Cont++;
             secondaCifra = Convert.ToDecimal(textBoxDisplay.Text);
             RisultatoFinale = Calcolo(primaCifra, secondaCifra, operazione);
 
-
-
             textBoxDisplay.Text = Convert.ToString(RisultatoFinale);
-
-
-
-
-
-
-
             PrimoNumeroCron = primaCifra.ToString();
             SecondoNumeroCron = secondaCifra.ToString();
             RisultatoFinaleString = RisultatoFinale.ToString();
@@ -383,11 +369,6 @@ namespace calcolatrice
                 loop++;
 
             } while (Cont < loop);
-
-
-
-
-
 
 
         }

@@ -35,8 +35,17 @@ namespace calcolatrice
             
             do
             {
-                Cronologia.Items.Add(Vettore[i]);
-                i++;
+                if (Vettore[i] ==null )
+                {
+                    break;
+                }
+                else
+                {
+                    Cronologia.Items.Add(Vettore[i]);
+                    i++;
+                }
+                
+                
 
             } while (i<Contatore);
 
