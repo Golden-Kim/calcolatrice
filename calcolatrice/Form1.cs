@@ -65,7 +65,7 @@ namespace calcolatrice
                     break;
 
                 case "/":
-                    if (numero1 == 0)
+                    if (numero2 == 0)
                     {
                         string Errore = "Impossibile dividere per 0";
                         string NomeErrore = "Errore di input";
